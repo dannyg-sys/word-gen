@@ -96,8 +96,8 @@ echo "Installing systemd service..."
 cp "${SOURCE_DIR}/word-generator.service" /etc/systemd/system/
 
 # Prompt for domain name
-read -p "Enter base domain (default: v-odoo.com): " BASE_DOMAIN
-BASE_DOMAIN=${BASE_DOMAIN:-v-odoo.com}
+read -p "Enter base domain (default: nellika.io): " BASE_DOMAIN
+BASE_DOMAIN=${BASE_DOMAIN:-nellika.io}
 DOMAIN="word-gen.${BASE_DOMAIN}"
 
 # Install and configure nginx

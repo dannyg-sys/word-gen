@@ -1,7 +1,7 @@
 # Word Generator Web Application
 
-[![Tests](https://github.com/DannyAtVodooTH/word-gen/actions/workflows/tests.yml/badge.svg)](https://github.com/DannyAtVodooTH/word-gen/actions/workflows/tests.yml)
-[![codecov](https://codecov.io/gh/DannyAtVodooTH/word-gen/branch/main/graph/badge.svg)](https://codecov.io/gh/DannyAtVodooTH/word-gen)
+[![Tests](https://github.com/dannyg-sys/word-gen/actions/workflows/tests.yml/badge.svg)](https://github.com/dannyg-sys/word-gen/actions/workflows/tests.yml)
+[![codecov](https://codecov.io/gh/dannyg-sys/word-gen/branch/main/graph/badge.svg)](https://codecov.io/gh/dannyg-sys/word-gen)
 
 A Flask-based web application that generates random words based on specified length and count. The application stores words in a SQLite database and provides both a web interface and REST API for generating random word combinations. Features dark mode support and can be installed as a Progressive Web App (PWA).
 
@@ -45,8 +45,8 @@ word-generator/
 
 1. Clone the repository and navigate to the directory:
 ```bash
-git clone https://github.com/yourusername/word-generator.git
-cd word-generator
+git clone https://github.com/dannyg-sys/word-gen.git
+cd word-gen
 ```
 
 2. Run the installation script:
@@ -169,7 +169,7 @@ sudo systemctl status word-generator
 - Database: `/opt/word-gen/data/words.db`
 - Word list: `/opt/word-gen/data/words.txt`
 - Service file: `/etc/systemd/system/word-generator.service`
-- Nginx config: `/etc/nginx/conf.d/word-gen.v-odoo.com.conf`
+- Nginx config: `/etc/nginx/conf.d/word-gen.nellika.io.conf`
 
 ### Default Service Configuration
 
@@ -190,16 +190,16 @@ sudo systemctl restart word-generator
 ### Nginx Configuration
 
 The application is configured to run behind nginx with:
-- Domain: word-gen.v-odoo.com
+- Domain: word-gen.nellika.io
 - Static files served directly by nginx
 - Reverse proxy to the gunicorn application
 
 To access the application:
 1. Add the domain to your hosts file:
    ```bash
-   echo "127.0.0.1 word-gen.v-odoo.com" | sudo tee -a /etc/hosts
+   echo "127.0.0.1 word-gen.nellika.io" | sudo tee -a /etc/hosts
    ```
-2. Access via browser: http://word-gen.v-odoo.com
+2. Access via browser: http://word-gen.nellika.io
 
 ## Dependencies
 
@@ -267,5 +267,5 @@ See [directory_structure.md](directory_structure.md) for a complete overview of 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Credits
-- Creator: [Danny Goossen](https://github.com/DannyAtVodooTH)
+- Creator: [Danny Goossen](https://github.com/dannyg-sys)
 - AI Assistant: Claude 3.5 Sonnet via [Cursor](https://cursor.sh)
