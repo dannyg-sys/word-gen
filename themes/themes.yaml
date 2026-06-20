@@ -1,0 +1,19 @@
+# Named theme presets for the word generator.
+#
+# Each preset combines one random word from each listed category, joined with "-"
+# (e.g. animal-city -> "lion-paris"). Category names map to <category>.txt files
+# in this directory. Add a preset by listing existing category files, or add a new
+# category by dropping a <name>.txt file here and referencing it below.
+themes:
+  - id: animal-city
+    name: "Animal · City"
+    categories: [animals, cities]
+  - id: mountain-river
+    name: "Mountain · River"
+    categories: [mountains, rivers]
+  - id: color-animal
+    name: "Color · Animal"
+    categories: [colors, animals]
+  - id: adjective-animal
+    name: "Adjective · Animal"
+    categories: [adjectives, animals]

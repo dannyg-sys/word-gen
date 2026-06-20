@@ -4,6 +4,7 @@ from .word_service import WordService
 
 app = Flask(__name__, static_folder='../static')
 word_service = None
+theme_service = None
 
 
 def _read_version():
@@ -29,6 +30,42 @@ def version():
 def init_word_service(service):
     global word_service
     word_service = service
+
+def init_theme_service(service):
+    global theme_service
+    theme_service = service
+
+@app.route('/themes', methods=['GET'])
+def get_themes():
+    if not theme_service:
+        return jsonify({'error': 'Theme service not initialized.'}), 500
+    return jsonify({'themes': theme_service.get_themes()})
+
+@app.route('/themed', methods=['POST'])
+def get_themed_words():
+    try:
+        if not theme_service:
+            return jsonify({'error': 'Theme service not initialized.'}), 500
+
+        data = request.get_json()
+        if not data:
+            return jsonify({'error': 'No JSON data provided'}), 400
+
+        theme_id = data.get('theme')
+        if not theme_id:
+            return jsonify({'error': 'No theme provided'}), 400
+
+        count = int(data.get('count', 1))
+        if count < 1:
+            return jsonify({'error': 'Count must be positive'}), 400
+
+        combinations = theme_service.generate(theme_id, count)
+        return jsonify({'words': '\n'.join(combinations)})
+    except ValueError as e:
+        return jsonify({'error': str(e)}), 400
+    except Exception as e:
+        print(f"Error processing themed request: {str(e)}")
+        return jsonify({'error': str(e)}), 400
 
 @app.route('/words', methods=['POST'])
 def get_words():

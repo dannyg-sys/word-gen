@@ -5,6 +5,7 @@ import os
 import logging
 from app.webapp import app, word_service
 from app.word_service import WordService
+from app.theme_service import ThemeService
 from gunicorn.app.base import BaseApplication
 
 def parse_args():
@@ -118,6 +119,10 @@ def main():
     # Set the word service in the Flask app
     import app.webapp as webapp
     webapp.init_word_service(word_service)
+
+    # Load themed word presets (in-memory) and wire them into the app.
+    themes_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'themes')
+    webapp.init_theme_service(ThemeService(themes_dir=themes_dir))
 
     # Create Gunicorn application
     options = {
