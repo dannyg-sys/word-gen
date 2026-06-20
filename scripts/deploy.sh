@@ -45,7 +45,7 @@ echo ">> Deploying word-gen v${VERSION} to ${REMOTE}:${DEST}"
 #   but the excluded paths below are runtime state and are never touched:
 #     data/   -> SQLite db + words list (populated on the server)
 #     venv/   -> server-side virtualenv
-rsync -az --delete --human-readable "${RSYNC_EXTRA[@]}" \
+rsync -az --delete --human-readable ${RSYNC_EXTRA[@]+"${RSYNC_EXTRA[@]}"} \
     --exclude='.git/' \
     --exclude='.github/' \
     --exclude='.claude/' \
